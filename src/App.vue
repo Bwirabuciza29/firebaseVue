@@ -23,11 +23,11 @@ import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 
 const router = useRouter()
 const isLoggedIn = ref(false)
-const auth = getAuth() // ✅ Initialisation correcte
+const auth = getAuth() 
 
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
-    isLoggedIn.value = !!user // ✅ Vérification simplifiée
+    isLoggedIn.value = !!user
   })
 })
 
@@ -35,7 +35,7 @@ const handleSignOut = async () => {
   try {
     await signOut(auth)
     isLoggedIn.value = false
-    router.push('/')
+    router.push('/sing-in')
   } catch (error) {
     console.error('Erreur lors de la déconnexion:', error)
   }

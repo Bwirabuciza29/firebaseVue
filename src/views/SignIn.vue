@@ -35,7 +35,7 @@ const register = async () => {
   try {
     await signInWithEmailAndPassword(getAuth(), email.value, password.value)
     console.log('Successfully signed in!')
-    router.push('/')
+    router.push('/feed')
   } catch (error) {
     console.log(error.code)
     switch (error.code) {
@@ -55,16 +55,18 @@ const register = async () => {
   }
 }
 
-const signInWithGoogle = async () => {
-  try {
-    const provider = new GoogleAuthProvider()
-    const result = await signInWithPopup(getAuth(), provider)
-    console.log('Signed in with Google:', result.user)
-    router.push('/')
-  } catch (error) {
-    console.log(error.code)
-    errMsg.value = 'Google sign-in failed. Please try again.'
-  }
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider()
+  signInWithPopup(getAuth(), provider)
+    .then((result) => {
+      const user = result.user
+      console.log('Signed in with Google:', user)
+      router.push('/feed')
+    })
+    .catch((error) => {
+      console.log(error.code)
+      alert(error.message)
+    })
 }
 </script>
 
