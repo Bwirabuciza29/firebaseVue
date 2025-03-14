@@ -16,7 +16,7 @@ import { ref } from 'vue'
 import {
   getAuth,
   signInWithEmailAndPassword,
-  signInWithPopup, 
+  signInWithPopup,
   GoogleAuthProvider,
 } from 'firebase/auth'
 import { useRouter } from 'vue-router'
