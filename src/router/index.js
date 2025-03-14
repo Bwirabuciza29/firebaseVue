@@ -44,7 +44,7 @@ router.beforeEach((to, from, next) => {
       next()
     } else {
       alert('Vous devez être connecté pour accéder à cette page.')
-      next('/sign-in') // ✅ Redirection vers la page de connexion
+      next('/sign-in')
     }
   } else {
     next()
